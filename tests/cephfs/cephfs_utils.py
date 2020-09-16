@@ -1157,6 +1157,9 @@ secretfile={secret_key},_netdev,noatime 00
 import time,os
 os.system('sudo systemctl stop network')
 time.sleep(20)
+os.system('sudo yum -y install network-scripts')
+os.system('rpm -ql network-scripts-10.00.1-1.el8.x86_64 | grep "/etc/rc.d/init.d/network" /etc/rc.d/init.d/network')
+os.system('ifup eth0')
 os.system('sudo systemctl start  network')
 '''
         node = ceph_object.node
